@@ -1,0 +1,7 @@
+VPC --> subnets --> IPv4 CIDR
+172.31.0.0/20 --> 1c
+172.31.16.0/20 --> 1b
+172.31.32.0/20 --> 1a
+EC2 --> Ubuntu 16.04 --> 1st subnet --> Netwok interfaces (172.31.9.1) --> SSH (22, anywhere), Custom (2181, 172.31.0.0/16), Custom (2888, 172.31.0.0/16), Custom (3888, 172.31.0.0/16), Custom (2181, My IP)
+    --> SSH-in
+Follow setup bash scripts 

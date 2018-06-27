@@ -1,0 +1,10 @@
+Log compression (gzip, snappy, lz4, uncompressed, producer) --> zip file to reduce size on disk --> default=producer (producer perform compression) 
+compression must processed batched and text data! (not avro, parquet, binary data) 
+-> uncompressed done by consumer
+
+Advanced configurations
+max.messages.bytes --> default=1MB for each topic, but need to increase consumer buffer
+min.isync.replicas --> default=1, if acks=all --> how many brokers acknowledge the write
+unclean.leader.election --> default=false, if true --> replica not in sync become leader if all ISR offline. 
+
+

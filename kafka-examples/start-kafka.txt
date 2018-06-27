@@ -1,0 +1,28 @@
+# Docker for Mac >= 1.12, Linux, Docker for Windows 10
+docker run --rm -it \
+           -p 2181:2181 -p 3030:3030 -p 8081:8081 \
+           -p 8082:8082 -p 8083:8083 -p 9092:9092 \
+           -e ADV_HOST=127.0.0.1 \
+           landoop/fast-data-dev
+
+# Docker toolbox
+docker-machine env default --shell cmd
+
+export SET DOCKER_TLS_VERIFY=1
+export SET DOCKER_HOST=tcp://192.168.99.100:2376
+export SET DOCKER_CERT_PATH=C:/Users/AISENSUM-DS/.docker/machine/machines/default
+export SET DOCKER_MACHINE_NAME=default
+export SET COMPOSE_CONVERT_WINDOWS_PATHS=true
+
+docker run --rm -it \
+          -p 2181:2181 -p 3030:3030 -p 8081:8081 \
+          -p 8082:8082 -p 8083:8083 -p 9092:9092 \
+          -e ADV_HOST=192.168.99.100 \
+          landoop/fast-data-dev
+
+# Kafka command lines tools
+docker run --rm -it --net=host landoop/fast-data-dev bash
+kafka-topics --zookeeper 192.168.99.100:2181
+kafka-console-producer --broker-list 192.168.99.100:9092
+kafka-console-consumer --bootstrap-server 192.168.99.100:9092
+
